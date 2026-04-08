@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Location</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    body {
+      background: #f5faff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .location-container {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    #coords {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #4a90e2;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #4a90e2;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .back-btn {
+      background: #aaa;
+    }
+  </style>
+  <script src="../components/navbar.js"></script>
+  <script src="../components/utils.js"></script>
+</head>
+
+<body onload="loadNavbar(); getLocation()">
+
+  <div class="location-container">
+    <h2>📍 Your Location</h2>
+
+    <p id="coords">Fetching location...</p>
+
+    <a id="mapLink" target="_blank"></a>
+
+    <button class="btn" onclick="getLocation()">🔄 Refresh Location</button>
+    <button class="btn back-btn" onclick="goBack()">⬅ Back</button>
+  </div>
+
+  <!-- JS -->
+  <script src="../script.js"></script>
+
+  <script>
+    function getLocation() {
+      const coordsText = document.getElementById("coords");
+      const mapLink = document.getElementById("mapLink");
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+
+          coordsText.innerText = `Latitude: ${lat}, Longitude: ${lon}`;
+
+          let link = `https://maps.google.com/?q=${lat},${lon}`;
+          mapLink.href = link;
+          mapLink.innerText = "View on Map";
+
+        }, () => {
+          coordsText.innerText = "Unable to fetch location.";
+        });
+      } else {
+        coordsText.innerText = "Geolocation not supported.";
+      }
+    }
+
+    function goBack() {
+      window.location.href = "../index.html";
+    }
+  </script>
+
+</body>
+</html>

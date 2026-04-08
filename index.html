@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeSpace</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="../components/navbar.js"></script>
+  <script src="../components/utils.js"></script>
+</head>
+
+<body onload="loadNavbar()">
+
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>🛡️ SafeSpace</h1>
+      <p class="tagline">Your safety matters. You are not alone.</p>
+    </header>
+
+    <!-- Panic Button -->
+    <div class="panic-container">
+      <button id="panicBtn">PANIC</button>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+
+      <button onclick="goToPage('pages/location.html')">
+        📍 Location
+      </button>
+
+      <button onclick="goToPage('pages/call.html')">
+        📞 Contacts
+      </button>
+
+      <button onclick="goToPage('pages/report.html')">
+        📝 Report
+      </button>
+
+      <button onclick="goToPage('pages/history.html')">
+        📂 History
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

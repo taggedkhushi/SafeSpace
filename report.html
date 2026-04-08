@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Issue</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    body {
+      background: #f5faff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .report-container {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .info-text {
+      font-size: 13px;
+      color: #777;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #4a90e2;
+      color: white;
+      cursor: pointer;
+    }
+
+    .back-btn {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #aaa;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+  <script src="../components/navbar.js"></script>
+  <script src="../components/utils.js"></script>
+</head>
+
+<body onload="loadNavbar()">
+
+  <div class="report-container">
+
+    <h2>📝 Report Issue</h2>
+    <p class="info-text">This space is safe. Share what you're going through.</p>
+
+    <!-- Form -->
+    <input type="text" id="name" placeholder="Your Name (optional)">
+    <textarea id="issue" placeholder="Describe your issue..."></textarea>
+
+    <button class="submit-btn" onclick="saveReport()">Submit</button>
+
+    <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  </div>
+
+  <!-- JS -->
+  <script src="../script.js"></script>
+
+  <script>
+    function goBack() {
+      window.location.href = "../index.html";
+    }
+  </script>
+
+</body>
+</html>  

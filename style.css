@@ -1,0 +1,108 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(to right, #eef5ff, #f9fbff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 350px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Header */
+header h1 {
+  font-size: 26px;
+  color: #333;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+/* Panic Button */
+.panic-container {
+  margin: 20px 0;
+}
+
+#panicBtn {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: none;
+  background: red;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  animation: pulse 1.5s infinite;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+#panicBtn:hover {
+  transform: scale(1.1);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+/* Action Buttons */
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #4a90e2;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover */
+.actions button:hover {
+  background: #357abd;
+  transform: scale(1.05);
+}
+
+/* Danger Mode */
+.danger {
+  background: #2b0000 !important;
+  color: white;
+}
