@@ -15,7 +15,9 @@ if (panicBtn) {
     // 🚨 Siren Sound
     let siren = new Audio("assets/sounds/siren.mp3");
     siren.loop = true;
-    siren.play();
+    siren.play().catch(() => {
+      console.log("Audio blocked by browser");
+    });
 
     // 📍 Get Location
     if (navigator.geolocation) {
@@ -39,10 +41,11 @@ if (panicBtn) {
       });
     }
 
-    // 📞 Fake Call Screen
+    // 📞 Fake Call Screen (FIXED PATH)
     setTimeout(() => {
-      siren.pause();   // stop siren before call
-      window.location.href = "pages/call.html";
+      siren.pause();
+      siren.currentTime = 0;
+      window.location.href = "call.html"; // ✅ FIXED
     }, 3000);
 
   }); 
@@ -65,7 +68,6 @@ function saveReport() {
 
   alert("Report saved successfully!");
 
-  // Clear form
   document.getElementById("name").value = "";
   document.getElementById("issue").value = "";
 }
