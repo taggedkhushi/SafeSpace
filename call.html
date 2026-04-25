@@ -15,6 +15,8 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+      overflow: hidden;
     }
 
     .call-container {
@@ -24,37 +26,60 @@
     .call-container h2 {
       font-size: 28px;
       margin-bottom: 10px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
     }
 
     .caller {
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      color: #ccc;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 40px;
+    }
+
+    .btn-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+
+    .btn-circle:active {
+      transform: scale(0.9);
     }
 
     .accept {
-      background: green;
+      background: #4cd964;
       color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
+      box-shadow: 0 0 15px rgba(76, 217, 100, 0.4);
     }
 
     .reject {
-      background: red;
+      background: #ff3b30;
       color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 59, 48, 0.4);
+    }
+    
+    .label {
+      font-size: 12px;
+      margin-top: 8px;
+      display: block;
     }
   </style>
   <script src="../components/navbar.js"></script>
@@ -67,33 +92,43 @@
     <p class="caller">Mom Calling...</p>
 
     <div class="buttons">
-      <button class="accept" onclick="acceptCall()">✔</button>
-      <button class="reject" onclick="rejectCall()">✖</button>
+      <div>
+        <button class="btn-circle reject" onclick="rejectCall()">✖</button>
+        <span class="label">Decline</span>
+      </div>
+      <div>
+        <button class="btn-circle accept" onclick="acceptCall()">✔</button>
+        <span class="label">Accept</span>
+      </div>
     </div>
   </div>
 
-  <!-- ✅ JS must be inside script -->
   <script>
-  let ringtone = new Audio("../assets/sounds/ringtone.mp3");
+  // 📞 Ringtone Setup with Online Link
+  // Phone calling sound
+  let ringtone = new Audio("https://www.soundjay.com/phone/sounds/phone-calling-1.mp3");
   ringtone.loop = true;
 
+  // Auto-play when page loads
   window.addEventListener("load", () => {
-    ringtone.play().catch(() => {
-      console.log("Sound blocked by browser");
+    ringtone.play().catch((err) => {
+      console.log("Auto-play blocked. Waiting for user interaction.");
+      // Browser safety: sounds often only play after a user interaction
     });
   });
 
   function acceptCall() {
     ringtone.pause();
     ringtone.currentTime = 0;
-    alert("Call Accepted");
+    alert("Call Accepted: Audio is being recorded for your safety.");
+    // Yahan hum wapas home page pe bhej rahe hain
     window.location.href = "../index.html";
   }
 
   function rejectCall() {
     ringtone.pause();
     ringtone.currentTime = 0;
-    alert("Call Rejected");
+    // User ko wapas bhej do
     window.location.href = "../index.html";
   }
 </script>
